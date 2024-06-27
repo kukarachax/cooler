@@ -46,13 +46,6 @@ void loop() {
 }
 
 void showTemp(float t) {
-  static float lastT;
-  static bool waitForChangeT = false;
-
-  if (waitForChangeT) {
-
-  }
-
   float averT = MAX_TEMP + NORMAL_TEMP;
   averT /= 2;
 
@@ -60,18 +53,12 @@ void showTemp(float t) {
   t /= 10;
 
   if (t >= MAX_TEMP) {
-    lastT = t;
-    waitForChangeT = true;
     rgy_show(1,0,0);
   }
   else if (t < MAX_TEMP && t >= averT) {
-    lastT = t;
-    waitForChangeT = true;
     rgy_show(0,0,1); 
   }
   else if (t < averT) {
-    lastT = t;
-    waitForChangeT = true;
     rgy_show(0,1,0);
   }
 
